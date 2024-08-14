@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+require('../models/User');
+require('../models/Stone');
 // TODO import models
 
 async function databaseConfig() {
