@@ -1,13 +1,22 @@
 const { Schema, model, Types } = require('mongoose');
-require('../models/User');
-require('../models/Data');
+require('./User');
+require('./Stone');
 //TODO import real data model
 const dataSchema = new Schema({
-    prop: {
+    name: {
         type: String,
         required: true,
     },
-    creator: {
+    category: {
+        type: String,
+        required: true,
+    },
+    likes: {
+        type: [Types.ObjectId],
+        ref: 'User',
+        default: [],
+    },
+    owner: {
         type: Types.ObjectId,
         ref: 'User',
         required: true,

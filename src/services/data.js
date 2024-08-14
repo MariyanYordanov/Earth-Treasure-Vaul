@@ -1,4 +1,4 @@
-const { Data } = require('../models/User');
+const { Data } = require('../models/Stone');
 // TODO Replace with real data service
 async function getAll() {
     return await Data.find().lean();  
