@@ -1,10 +1,11 @@
 const { Router } = require('express');
+const { getRecent } = require('../services/data');
 // TODO replace with your own router
 const homeRouter = Router();
 
 homeRouter.get('/', async (req, res) => {
-    const gems = [ 1, 1, 1];
-    res.render('home', { gems });
+    const stones = await getRecent();
+    res.render('home', { stones });
 });
 
 

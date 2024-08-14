@@ -1,8 +1,6 @@
 const { Schema, model, Types } = require('mongoose');
-require('./User');
-require('./Stone');
 //TODO import real data model
-const dataSchema = new Schema({
+const stoneSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -23,6 +21,6 @@ const dataSchema = new Schema({
     },
 });
 
-const Data = model('Data', dataSchema);
+const Stone = model('Stone', stoneSchema);
 
-module.exports = { Data };
+module.exports = { Stone };

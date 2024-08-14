@@ -1,16 +1,21 @@
-const { Data } = require('../models/Stone');
+const { Stone } = require('../models/Stone');
+const mongoose = require('mongoose');
 // TODO Replace with real data service
 async function getAll() {
-    return await Data.find().lean();  
+    return await Stone.find().lean();  
 }
 
 async function getById(id) {
-    return await Data.findOneById(id).lean();
+    return await Stone.findOneById(id).lean();
 }
 
-async function create(data, creatorId) {
+async function getRecent(){
+    return await Stone.find().sort({ $natural: -1 }).limit(3);
+}
 
-    const result = new Data({
+async function create(data, ownerId) {
+
+    const result = new Stone({
         prop: data.prop,
         creater: data.creatorId
     });
@@ -20,7 +25,7 @@ async function create(data, creatorId) {
 
 async function update(id, data, userId) {
 
-    const record = await Data.findById(id);
+    const record = await Stone.findById(id);
     if(!record){
         throw new ReferenceError('No such data' + id);
     }
@@ -29,13 +34,15 @@ async function update(id, data, userId) {
         throw new ReferenceError('Access denied');
     }
 
-    record.prop = data.prop;
+    record.name = data.name;
+    record.category = data.category;
+    record.owner = data.owner;
 
     return await record.save();
 }
 
 async function deleteById(id, userId) {
-    const record = await Data.findById(id);
+    const record = await Stone.findById(id);
     if(!record){
         throw new ReferenceError('No such data' + id);
     }
@@ -44,7 +51,7 @@ async function deleteById(id, userId) {
         throw new ReferenceError('Access denied');
     }
 
-    return await Data.findByIdAndDelete(id);
+    return await Stone.findByIdAndDelete(id);
 }
 
-module.exports = { getAll, getById, create, update, deleteById };
+module.exports = { getAll, getById, create, update, deleteById, getRecent };
