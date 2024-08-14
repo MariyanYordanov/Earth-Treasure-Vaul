@@ -10,7 +10,7 @@ function expressConfig(app) {
     app.use(session());
     // TODO add other middlewares
 
-    app.use("static", express.static("static"));
+    app.use('static',express.static('static'));
     app.use(express.urlencoded({ extended: true }));
 }
 
