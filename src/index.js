@@ -1,8 +1,8 @@
-const express = require("express");
-const { expressConfig } = require("./config/express");
-const { databaseConfig } = require("./config/database");
-const { hbsConfig } = require("./config/hbs");
-const { configRoutes } = require("./config/routes");
+const express = require('express');
+const { expressConfig } = require('../src/config/express');
+const { databaseConfig } = require('../src/config/database');   
+const { hbsConfig } = require('../src/config/hbs');
+const { configRoutes } = require('../src/config/routes');
 const { register, login } = require("./services/user");
 const { createToken, verifyToken } = require("./services/jwt");
 

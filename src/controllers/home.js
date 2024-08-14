@@ -4,9 +4,9 @@ const { createToken } = require('../services/jwt');
 // TODO replace with your own router
 const homeRouter = Router();
 
-homeRouter.get('/', async (req, res) => {
-    const gems = [1,2,3,4,5,6,7,8,9,10];
-    res.render('home', { title: 'Home Page', gems });
+homeRouter.get('/', (req, res) => {
+    const gems = [ 1, 1, 1];
+    res.render('home', { gems });
 });
 
 
